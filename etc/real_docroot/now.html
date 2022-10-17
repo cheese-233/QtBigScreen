@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta http-equiv="Cache" content="no-cache">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="font/font.css" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>当前时间</title>
+</head>
+
+<body style="padding-top: 70px;background-image:url('images/bg.jpeg');" data-spy="scroll" data-target=".navbart"
+    data-offset="1">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
+    <nav class="navbar fixed-top navbar-expand navbar-dark bg-dark">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active"> <a class="nav-link" href="/index.html">
+                        <div class="row">
+                            <span class="carousel-control-prev-icon"></span>
+                            <h5>主页</h5>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <style>
+        .time_box {
+            width: 68px;
+            height: 68px;
+            background: #00A5FF9F;
+            box-shadow: 0px 13px 20px 0px rgb(3 136 209 / 20%);
+            border-radius: 10px;
+            font-size: 40px;
+            font-weight: bold;
+            color: #FFFFFF;
+            text-align: center;
+            line-height: 68px;
+        }
+
+        .time_point {
+            font-size: 34px;
+            font-weight: bold;
+            color: #00A4EE;
+            display: block;
+            margin: 0 10px;
+            width: 12px;
+        }
+    </style>
+    <div class="row" style="margin-left: 0;margin-right: 0;">
+        <p id="hour_box" class="time_box"></p><span class="time_point">:</span>
+        <p id="minute_box" class="time_box"></p><span class="time_point">:</span>
+        <p id="seconds_box" class="time_box"></p>
+    </div>
+    <script>
+        function time1() {
+            var date = new Date();
+            var hour = date.getHours();
+            var minute = date.getMinutes();
+            var second = date.getSeconds();
+            if (hour < 10) hour = "0" + hour;
+            if (minute < 10) minute = "0" + minute;
+            if (second < 10) second = "0" + second;
+            document.getElementById("hour_box").innerHTML = hour;
+            document.getElementById("minute_box").innerHTML = minute;
+            document.getElementById("seconds_box").innerHTML = second;
+            $('title').text("当前时间: " + hour + ":" + minute);
+        }
+        time1();
+        var retime = window.setInterval(function () { time1(); }, 1000);
+    </script>
+</body>

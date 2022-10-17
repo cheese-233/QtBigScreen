@@ -55,12 +55,10 @@ bool xCopyFile(QString source, QString destination)
     return false;
 }
 bool initRealDocroot(){
-    QDir Real_docroot = dir1+"\\real_docroot";
-    if(Real_docroot.exists()){
-        Real_docroot.removeRecursively();
+    QDir Real_docroot = dir1+"\\real_docroot\\index.html";
+    if(!Real_docroot.exists()){
+        return xCopyFile(dir1+"\\source",dir1+"\\real_docroot");
     }
-    Real_docroot.mkdir(dir1+"\\real_docroot");
-    xCopyFile(dir1+"\\source",dir1+"\\real_docroot");
     return 0;
 }
 /**

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="font/font.css" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>设置</title>
+</head>
+
+<body style="background-color:#39C5BB; padding-top: 70px;">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="LoadNavBar.js"></script>
+    <style>
+        .overlay {
+            position: relative;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.1);
+            filter: blur(20px);
+        }
+    </style>
+    <iframe frameborder="0" style="background:transparent;width: 0px;height:0px;" id="ifr" src="">
+    </iframe>
+    <div class="card container mt-3 align-content-center col-5" style="height:300px;" id="float-card">
+        <div class="card-body" style="color: #000000;">
+            <h5 class="card-text">为了安全,请通过验证</h5>
+            <div class="card-text">
+                <div class="row">
+                    <input type="text" value="" maxlength="4" placeholder="请输入验证码（区分大小写）"
+                        style="font-size:20px;border-top: 0px;border-left: 0px;border-right: 0px;" id="checktext">
+                    <canvas id="canvas" width="100" height="43" onclick="dj()"></canvas>
+                </div>
+                <div class="row">
+                    <p> </p>
+                </div>
+                <div class="row">
+                    <input type="button" value="提交" onclick="sublim()" />
+                </div>
+            </div>
+            <script src="./js/checkcode.js"></script>
+        </div>
+    </div>
+    <div id="fill" class="overlay" style="pointer-events: none">
+        <script>
+            function time1() {
+                var date = new Date();
+                var hour = date.getHours();
+                var minute = date.getMinutes();
+                if (hour < 10) hour = "0" + hour;
+                if (minute < 10) minute = "0" + minute;
+                document.getElementById("time").innerHTML = hour + ":" + minute;
+            }
+            time1();
+            var retime = window.setInterval(function () { time1(); }, 10000);
+        </script>
+        <form method="post" enctype="multipart/form-data" action="/action_time" id="form_get">
+            <div class="container mt-3 align-content-center col-lg-7 card"
+                style="margin: 0 auto;background-color:rgba(255, 255, 255, 0.6);" draggable="false" id="drag">
+                <div class="card-body">
+                    <h2 class="card-title" style="text-align:center;">上传课堂时间表</h2>
+                    <p class="card-text">请上传一个时间表,用于课堂时间</p>
+                    <input type='hidden' name='action' value='show'>选择文件: <input type="file" name="file1"
+                        onclick="enabledrop()"><br>
+                </div>
+            </div>
+            <div class=" container mt-3 align-content-center col-lg-7 card" id="target"
+                ondragover="dragoverHandler(event)" ondrop="dropHandler(event)"
+                style="margin: 0 auto;background-color:rgba(255, 255, 255, 0.6);">
+                <div class="card-body">
+                    <p class="card-text">将卡片拖拽到此处提交</p>
+                    <p class="card-text" id="submitbtn"></p>
+                </div>
+            </div>
+            <div class=" container mt-3 align-content-center col-lg-7 card"
+                style="margin: 0 auto;background-color:rgba(255, 255, 255, 0.6);">
+                <div class="card-body">
+                    <p class="card-text">样式示例<a href="./example.txt" download="example.txt">(下载)</a></p>
+                    <iframe frameborder="0" style="background:transparent;" src="./example.txt" frameborder="0">
+                    </iframe>
+                </div>
+
+            </div>
+        </form>
+        <div id="add_card"></div>
+        <div class=" container mt-3 align-content-center col-lg-7 card"
+            style="margin: 0 auto;background-color:rgba(255, 255, 255, 0.6);">
+            <div class="card-body">
+                <p class="card-text">高级选项</p>
+                <a href="javascript:stop();">关闭主机服务器</a>
+            </div>
+            <script>
+                function stop() {
+                    var i = confirm("确定要关闭吗?");
+                    if (i == true) {
+                        document.getElementById("ifr").src = "/stop" + (new Date()).getDate();
+                    }
+                }
+            </script>
+        </div>
+        <script>
+            function enabledrop() {
+                document.getElementById('drag').draggable = "true";
+                document.getElementById("submitbtn").innerHTML = "<input type='submit' value='或点击此处'>";
+            }
+            function dragoverHandler(event) {
+                event.preventDefault();
+                event.dataTransfer.dropEffect = 'move';
+            }
+            function dropHandler(event) {
+                document.getElementById('form_get').submit();
+            }
+        </script>
+    </div>
+    <div id="normal"></div>
+    <script src="loadSetting.js"></script>
+</body>
+
+</html>

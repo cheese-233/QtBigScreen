@@ -3,9 +3,9 @@
 #include <Windows.h>
 #include "QtNetwork/qnetworkinterface.h"
 #include <QClipboard>
-#include <QMessageBox>
 #include <QSettings>
 #include <QTextCodec>
+#include <QDir>
 
 QSystemTrayIcon *tray;
 icon::icon(QWidget *parent)
@@ -30,6 +30,15 @@ void RegAppAutoStart()
         regSettings.setValue(appName, appPath.replace("/", "\\"));
         Toast::showTip("已设置开机启动");
     }
+}
+bool XCopyFile(QString source, QString destination)
+{
+    QDir source_dir(source);
+    source_dir.mkpath(source);
+    QString str="xcopy \""+source+"\" \""+destination+"\" /y /E /i /q &";
+    qDebug() << str;
+    system(str.toStdString().c_str());
+    return false;
 }
 std::map<QString,QString> getNetWorkInfo()
 {

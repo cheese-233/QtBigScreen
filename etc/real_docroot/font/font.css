@@ -1,0 +1,18 @@
+@font-face {
+    font-family: GoogleSans;
+    src: url("GoogleSans-Regular.ttf")
+}
+
+@font-face {
+    font-family: ComicSans;
+    src: url("comic.ttf")
+}
+
+@font-face {
+    font-family: pixel;
+    src: url("pixel.TTF");
+}
+
+body {
+    font-family: GoogleSans, Arial;
+}

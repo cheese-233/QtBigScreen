@@ -1,11 +1,5 @@
-﻿/** @file   Toast.h
- *  @brief  Qt模拟安卓移动客户端Toast提示消息
- *  @note   qss set in ui file
- *  @author lesliefish
- *  @date   2019/05/31
- */
-#pragma once
-
+﻿#pragma once
+#pragma execution_character_set("utf-8")
 #include <QtWidgets/QWidget>
 #include "ui_Toast.h"
 

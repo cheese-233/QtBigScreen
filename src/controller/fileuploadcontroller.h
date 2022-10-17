@@ -1,11 +1,7 @@
-/**
-  @file
-  @author Stefan Frings
-*/
 
 #ifndef FILEUPLOADCONTROLLER_H
 #define FILEUPLOADCONTROLLER_H
-
+#pragma execution_character_set("utf-8")
 #include "httprequest.h"
 #include "httpresponse.h"
 #include "httprequesthandler.h"

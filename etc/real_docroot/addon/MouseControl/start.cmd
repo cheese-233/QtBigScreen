@@ -1,0 +1,1 @@
+jsmpeg-vnc.exe -b 1000 -p 9006 -f 30  desktop

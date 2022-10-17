@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>图片登录验证</title>
+    <link href="font/font.css" rel="stylesheet">
+</head>
+
+<body>
+    <input type=" text" value="" placeholder="请输入验证码（区分大小写）"
+        style="height:43px;position: relative; top:-15px; font-size:20px;" id="checktext">
+    <canvas id="canvas" width="100" height="43" onclick="dj()" onload="dj()" style="border: 1px solid #ccc;
+        border-radius: 5px;"></canvas>
+    <button class="btn" onclick="sublim()">提交</button>
+    <script src="./js/checkcode.js"></script>
+</body>

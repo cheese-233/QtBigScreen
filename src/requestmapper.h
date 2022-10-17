@@ -2,7 +2,7 @@
 
 #ifndef REQUESTMAPPER_H
 #define REQUESTMAPPER_H
-
+#pragma execution_character_set("utf-8")
 #include "httprequesthandler.h"
 
 
